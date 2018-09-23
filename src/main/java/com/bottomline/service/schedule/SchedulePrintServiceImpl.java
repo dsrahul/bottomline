@@ -10,14 +10,14 @@ import java.util.List;
  */
 public class SchedulePrintServiceImpl implements SchedulePrintService {
 
+
+    public static final String REGULAR_AMOUNT_£_2F = "Regular Amount\t\t\t£%,.2f\n";
+    public static final String LAST_AMOUNT_£_2F = "Last Amount\t\t\t£%,.2f\n";
     private Printer printer;
 
     public SchedulePrintServiceImpl(Printer printer) {
         this.printer = printer;
     }
-
-    public static final String REGULAR_AMOUNT_£_2F = "Regular Amount\t\t\t£%,.2f\n";
-    public static final String LAST_AMOUNT_£_2F = "Last Amount\t\t\t£%,.2f\n";
 
     @Override
     public void printDetailedSchedule(List<BigDecimal> paymentSchedule) {
