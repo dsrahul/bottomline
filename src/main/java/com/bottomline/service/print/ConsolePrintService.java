@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class ConsolePrintService implements PrintService {
 
     @Override
-    public void print(String message, BigDecimal anAmount) {
+    public void print(final String message, final BigDecimal anAmount) {
 
         System.out.printf(message, anAmount);
 
