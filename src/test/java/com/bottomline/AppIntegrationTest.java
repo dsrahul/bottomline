@@ -53,9 +53,16 @@ public class AppIntegrationTest {
 
     @Test
     public void testCalculateRepayment4() {
+        App.main(new String[]{"10", "30000"});
+
+        assertEquals("", getOutput());
+    }
+
+    @Test
+    public void testCalculateRepayment5() {
         App.main(new String[]{"", ""});
 
-        assertEquals("Proper Usage is (e.g.): java -cp target/cc-1.0-SNAPSHOT.jar com.bottomline.App 10.00 3.00", getOutput());
+        assertEquals("Proper Usage is (e.g.): java -cp target/cc-1.0-SNAPSHOT.jar com.bottomline.App 10.00 3.00\n", getOutput());
     }
 
 }
