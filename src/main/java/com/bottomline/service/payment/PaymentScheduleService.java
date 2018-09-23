@@ -17,7 +17,7 @@ public class PaymentScheduleService implements IPaymentSchedule {
         this.schedulePrintService = schedulePrintService;
     }
 
-    public void calculatePaymentPlan(BigDecimal amount, BigDecimal numberOfPayments) {
+    public void calculatePaymentPlan(final BigDecimal amount, final BigDecimal numberOfPayments) {
 
         if (amount.compareTo(BigDecimal.ZERO) <= 0 ||
                 numberOfPayments.compareTo(BigDecimal.ZERO) <= 0) {
@@ -41,15 +41,16 @@ public class PaymentScheduleService implements IPaymentSchedule {
     /*
     This method is recursively called to build the payment schedule
      */
-    private void paymentSchedule(BigDecimal amount, BigDecimal numberOfPayments, BigDecimal regularAmount, List<BigDecimal> paymentSchedule) {
+    private void paymentSchedule(final BigDecimal amount, final BigDecimal numberOfPayments, final BigDecimal regularAmount,
+                                 final List<BigDecimal> paymentSchedule) {
         if (numberOfPayments.compareTo(BigDecimal.ONE) == 0) {
             paymentSchedule.add(amount);
             return;
         }
         paymentSchedule.add(regularAmount);
-        amount = amount.subtract(regularAmount);
-        numberOfPayments = numberOfPayments.subtract(BigDecimal.ONE);
-        paymentSchedule(amount, numberOfPayments, regularAmount, paymentSchedule);
+        BigDecimal newAmount = amount.subtract(regularAmount);
+        BigDecimal newNumberOfPayments = numberOfPayments.subtract(BigDecimal.ONE);
+        paymentSchedule(newAmount, newNumberOfPayments, regularAmount, paymentSchedule);
 
     }
 }

@@ -6,8 +6,8 @@ import java.util.List;
 public interface SchedulePrintService {
 
 
-    void printDetailedSchedule(List<BigDecimal> paymentSchedule);
+    void printDetailedSchedule(final List<BigDecimal> paymentSchedule);
 
-    void printSimpleSchedule(List<BigDecimal> paymentSchedule);
+    void printSimpleSchedule(final List<BigDecimal> paymentSchedule);
 
 }

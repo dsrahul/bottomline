@@ -11,28 +11,28 @@ import java.util.List;
 public class SchedulePrintServiceImpl implements SchedulePrintService {
 
 
-    public static final String REGULAR_AMOUNT_£_2F = "Regular Amount\t\t\t£%,.2f\n";
-    public static final String LAST_AMOUNT_£_2F = "Last Amount\t\t\t£%,.2f\n";
+    private static final String REGULAR_AMOUNT = "Regular Amount\t\t\t£%,.2f\n";
+    private static final String LAST_AMOUNT = "Last Amount\t\t\t£%,.2f\n";
     private Printer printer;
 
-    public SchedulePrintServiceImpl(Printer printer) {
+    public SchedulePrintServiceImpl(final Printer printer) {
         this.printer = printer;
     }
 
     @Override
-    public void printDetailedSchedule(List<BigDecimal> paymentSchedule) {
+    public void printDetailedSchedule(final List<BigDecimal> paymentSchedule) {
         paymentSchedule.forEach(System.out::println);
     }
 
     @Override
-    public void printSimpleSchedule(List<BigDecimal> paymentSchedule) {
+    public void printSimpleSchedule(final List<BigDecimal> paymentSchedule) {
         final BigDecimal firstPayment = paymentSchedule.get(0);
         final BigDecimal lastPayment = paymentSchedule.stream().reduce((first, second) -> second).orElse(firstPayment);
 
-        printer.print(REGULAR_AMOUNT_£_2F, firstPayment);
+        printer.print(REGULAR_AMOUNT, firstPayment);
 
         if (firstPayment.compareTo(lastPayment) != 0) {
-            printer.print(LAST_AMOUNT_£_2F, lastPayment);
+            printer.print(LAST_AMOUNT, lastPayment);
         }
     }
 }

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public abstract class Printer {
 
-    public void print(String message, BigDecimal anAmount) {
+    public void print(final String message, final BigDecimal anAmount) {
         final PrintService print = getPrinter();
 
         print.print(message, anAmount);
