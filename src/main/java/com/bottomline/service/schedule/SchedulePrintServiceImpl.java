@@ -26,11 +26,12 @@ public class SchedulePrintServiceImpl implements SchedulePrintService {
 
     @Override
     public void printSimpleSchedule(List<BigDecimal> paymentSchedule) {
-        final BigDecimal lastPayment = paymentSchedule.stream().reduce((first, second) -> second).orElse(paymentSchedule.get(0));
+        final BigDecimal firstPayment = paymentSchedule.get(0);
+        final BigDecimal lastPayment = paymentSchedule.stream().reduce((first, second) -> second).orElse(firstPayment);
 
-        printer.print(REGULAR_AMOUNT_£_2F, paymentSchedule.get(0));
+        printer.print(REGULAR_AMOUNT_£_2F, firstPayment);
 
-        if (lastPayment.divideAndRemainder(paymentSchedule.get(0))[1].compareTo(BigDecimal.ZERO) > 0) {
+        if (firstPayment.compareTo(lastPayment) != 0) {
             printer.print(LAST_AMOUNT_£_2F, lastPayment);
         }
     }
