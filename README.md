@@ -27,7 +27,7 @@ I started off by using double for calculating the schedule however the precision
 
 * Use git to clone the repository for a local copy using the command
 ```bash
-    git clone
+    https://github.com/dsrahul/bottomline.git
 ```
 * The Project can be built and tests run by opening a terminal window and using the command at the root of the project ```mvn clean install```
 * The project should successfully and a jar file ``cc-1.0-SNAPSHOT.jar`` will be created within the ``target`` folder

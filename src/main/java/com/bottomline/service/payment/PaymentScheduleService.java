@@ -27,7 +27,6 @@ public class PaymentScheduleService implements IPaymentSchedule {
             return;
         }
 
-
         final BigDecimal regularAmount = amount.divide(numberOfPayments, 2, RoundingMode.HALF_UP);
         List<BigDecimal> paymentSchedule = new ArrayList<>();
         paymentSchedule(amount, numberOfPayments, regularAmount, paymentSchedule);
